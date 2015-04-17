@@ -1,4 +1,6 @@
-class dhcp::server::install {
+class dhcp::server::install(
+ 
+) {
 
   case $::operatingsystem {
     ubuntu, debian: {

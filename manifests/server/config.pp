@@ -1,4 +1,7 @@
-class dhcp::server::config {
+class dhcp::server::config(
+  $options    = '',
+  $interfaces = 'eth0',     
+) {
 
   file { '/etc/dhcp':
     ensure  => directory,
@@ -28,6 +31,14 @@ class dhcp::server::config {
     owner   => 'root',
     group   => 'root',
     mode    => '0755',
+  }
+  
+  file { '/etc/default/isc-dhcp-server':
+    ensure => present,
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0755',
+    content => template("dhcp/default.erb")   
   }
 
 }

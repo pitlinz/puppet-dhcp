@@ -21,7 +21,9 @@ subnet <%= subnet %> netmask <%= netmask %> {
 <% end -%>
 
   option broadcast-address <%= broadcast %>;
+<%- if @range_begin and @rang_end -%>  
   range <%= range_begin %> <%= range_end %>;
+<% end -%>
 
 <% if domain_name -%>
   option domain-name "<%= domain_name %>";
