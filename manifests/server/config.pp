@@ -1,6 +1,6 @@
 class dhcp::server::config(
-  $options    = '',
-  $interfaces = 'eth0',     
+  $options    = $::dhcp::server::options,
+  $interfaces = $::dhcp::server::interfaces,
 ) {
 
   file { '/etc/dhcp':
@@ -32,13 +32,13 @@ class dhcp::server::config(
     group   => 'root',
     mode    => '0755',
   }
-  
+
   file { '/etc/default/isc-dhcp-server':
     ensure => present,
     owner   => 'root',
     group   => 'root',
     mode    => '0755',
-    content => template("dhcp/default.erb")   
+    content => template("dhcp/default.erb")
   }
 
 }
