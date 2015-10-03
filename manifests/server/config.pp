@@ -1,13 +1,15 @@
+# == Class dhcp::server::config
+#
 class dhcp::server::config(
   $options    = $::dhcp::server::options,
   $interfaces = $::dhcp::server::interfaces,
 ) {
 
   file { '/etc/dhcp':
-    ensure  => directory,
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0755',
+    ensure => directory,
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0755',
   }
 
   file { '/etc/dhcp/dhcpd.conf':
@@ -24,6 +26,7 @@ class dhcp::server::config(
     owner   => 'root',
     group   => 'root',
     mode    => '0755',
+    require => File['/etc/dhcp'],
   }
 
   file { '/etc/dhcp/hosts':
@@ -31,6 +34,7 @@ class dhcp::server::config(
     owner   => 'root',
     group   => 'root',
     mode    => '0755',
+    require => File['/etc/dhcp'],
   }
 
   file { '/etc/default/isc-dhcp-server':

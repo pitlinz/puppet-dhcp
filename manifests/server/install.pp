@@ -1,3 +1,6 @@
+/**
+ * install the server
+ */
 class dhcp::server::install(
 
 ) {
